@@ -4,15 +4,19 @@ const mediaTypes = ["photo", 'png', "animated_image", "video", "audio"];
 module.exports = {
 	config: {
 		name: "callad",
-		version: "1.7",
+		version: "1.6",
 		author: "NTKhang",
 		countDown: 5,
 		role: 0,
-		description: {
+		shortDescription: {
+			vi: "gửi tin nhắn về admin bot",
+			en: "send message to admin bot"
+		},
+		longDescription: {
 			vi: "gửi báo cáo, góp ý, báo lỗi,... của bạn về admin bot",
 			en: "send report, feedback, bug,... to admin bot"
 		},
-		category: "contacts admin",
+		category: "system",
 		guide: {
 			vi: "   {pn} <tin nhắn>",
 			en: "   {pn} <message>"
@@ -56,7 +60,7 @@ module.exports = {
 		if (config.adminBot.length == 0)
 			return message.reply(getLang("noAdmin"));
 		const senderName = await usersData.getName(senderID);
-		const msg = "==📨️ CALL ADMIN 📨️=="
+		const msg = "==📨 CALL ADMIN 📨=="
 			+ `\n- User Name: ${senderName}`
 			+ `\n- User ID: ${senderID}`
 			+ (isGroup ? getLang("sendByGroup", (await threadsData.get(threadID)).threadName, threadID) : getLang("sendByUser"));
