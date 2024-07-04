@@ -24,12 +24,12 @@ module.exports = {
     },
 
     onStart: async function ({ api, event, args }) {
-      /*
+      
       if (!isVip(event.senderID)) {
         api.sendMessage("You are not a VIP member.", event.threadID, event.messageID);
         return;
       }
-      */
+      
         let a = "someone";
         const mentionIndex = args.findIndex(arg => arg.startsWith('@'));
         if (mentionIndex !== -1 && mentionIndex + 1 < args.length) {
