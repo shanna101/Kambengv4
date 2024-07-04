@@ -39,7 +39,7 @@ module.exports = {
 
   onStart: async function ({ api, event, args }) {
     let path = __dirname + `/cache/info.png`;
-    const token = "EAAD6V7os0gcBO8sBKorWNJtTmwZA0G3YW41Uy56mr6sHX33nDTv9ayZCqoG8INkBZCsISkyv6kl6K2fylKuOakATgcEzEvbPdzW2JpNMYmZCC2EDbkx85r5pyZCGApvU5fQrH7CvenLM4W4v6afmPVUCQBRZBbnXmxqqTLqfClR52amLaSnt2pxy38gWkZArwRcsAZDZD"; 
+    const token = "EAAD6V7os0gcBO7ZCv1Y1BpY6z3xwuk6KVb2wteZAmZCjllcZByWnPaKjv9alZBNZBy7icGWgfIMekPaMGZC2eguvYBZCES5mor7qwGlOvZAhM1KwH1CeNFYZBjDz0LiBZBkxt5zuTuUKVmP3b4CnjUfJTE1bOYqHA8zsKfn9sLJA6XZCruWnitN7ST8jWb0esy1Q0InYdgZDZD"; 
     let id;
     if (args.join().includes('@')) {
       id = Object.keys(event.mentions)[0];
