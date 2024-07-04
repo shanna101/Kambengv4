@@ -1,7 +1,7 @@
 const cron = require("node-cron");
 const moment = require("moment");
 const prefix = "/"; // Your bot's prefix
-const botName = "𝗚𝗼𝗷𝗼 𝗔𝗜";
+const botName = "𝗚𝗼𝗷𝗼 | ☣️";
 const ownerName = "☣️ 𝗚𝗮𝗯 𝗬𝘂";
 
 module.exports = {
@@ -12,7 +12,7 @@ module.exports = {
     shortDescription: " ",
     longDescription: "Autobio",
     category: "owner",
-    guide: 
+    guide: {
       en: "{pn}autobio"
     }
   },
