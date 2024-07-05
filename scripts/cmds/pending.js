@@ -49,7 +49,7 @@ onReply: async function({ api, event, Reply, getLang, commandName, prefix }) {
             if (isNaN(singleIndex) || singleIndex <= 0 || singleIndex > Reply.pending.length) return api.sendMessage(getLang("invaildNumber", singleIndex), threadID, messageID);
             api.sendMessage(`✅ 𝗖𝗢𝗡𝗡𝗘𝗖𝗧𝗘𝗗 𝗦𝗨𝗖𝗖𝗘𝗦! 
 
-➭ BotName: 𝗚𝗢𝗝𝗢 𝗕𝗢𝗧
+➭ BotName: 義 𝗚𝗶𝘆𝘂 | 🌊 勇
 ➭ Bot Prefix: ⟨ / ⟩
 ➭ Admin: ⟨ 𝗚𝗔𝗕 𝗬𝗨 ⟩
 ➭ Ownerlink: ‹https://www.facebook.com/100079114908948›
