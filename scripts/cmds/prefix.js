@@ -1,1 +1,41 @@
-const fs = require("fs-extra"); const { utils } = global; module.exports = { config: { name: "prefix", version: "1.0", author: "Ntkang", countDown: 1, role: 0, shortDescription: "prefix", longDescription: "a prefix on bot", category: "box chat", guide: { en: "prefix" } }, langs: { en: { reset: "✨ 𝗚𝗥𝗢𝗨𝗣 𝗣𝗥𝗘𝗙𝗜𝗫 𝗥𝗘𝗦𝗘𝗧𝗘𝗗\n\n➪ Your prefix has been reset to default: %1", onlyAdmin: "⛔ 𝗡𝗢 𝗣𝗘𝗥𝗠𝗜𝗦𝗦𝗜𝗢𝗡 𝗔𝗟𝗟𝗢𝗪\n\n➪ Only admin can change prefix of system bot", confirmGlobal: "🎨 𝗖𝗢𝗡𝗙𝗜𝗥𝗠 𝗠𝗘𝗦𝗦𝗔𝗚𝗘 𝗥𝗘𝗔𝗖𝗧\n\n➪ Please react to this message to confirm change prefix of system bot", confirmThisThread: "🔶 𝗖𝗢𝗡𝗙𝗜𝗥𝗠 𝗠𝗘𝗦𝗦𝗔𝗚𝗘 𝗥𝗘𝗔𝗖𝗧\n\n➪ Please react to this message to confirm change prefix in your box chat", successGlobal: "📚 𝗦𝗬𝗦𝗧𝗘𝗠 𝗣𝗥𝗘𝗙𝗜𝗫 𝗖𝗛𝗔𝗡𝗚𝗘𝗗\n\n➪ Changed prefix of system bot to: %1", successThisThread: "🔷 𝗕𝗢𝗫 𝗖𝗛𝗔𝗧 𝗣𝗥𝗘𝗙𝗜𝗫 𝗖𝗛𝗔𝗡𝗚𝗘𝗗\n\n➪ Changed prefix in your box chat to: %1", myPrefix: "🌊 𝖲𝗒𝗌𝗍𝖾𝗆 𝗉𝗋𝖾𝖿𝗂𝗑: [ %1 ]\n🌊 𝖸𝗈𝗎𝗋 𝖻𝗈𝗑 𝖼𝗁𝖺𝗍 𝗉𝗋𝖾𝖿𝗂𝗑: [ %2 ]" } }, onStart: async function ({ message, role, args, commandName, event, threadsData, getLang }) { if (!args[0]) return message.SyntaxError(); if (args[0] === 'reset') { await threadsData.set(event.threadID, null, "data.prefix"); return message.reply(getLang("reset", global.GoatBot.config.prefix)); } const newPrefix = args[0]; const formSet = { commandName, author: event.senderID, newPrefix }; if (args[1] === "-g") { if (role < 2) { return message.reply(getLang("onlyAdmin")); } else { formSet.setGlobal = true; } } else { formSet.setGlobal = false; } return message.reply(args[1] === "-g" ? getLang("confirmGlobal") : getLang("confirmThisThread"), (err, info) => { formSet.messageID = info.messageID; global.GoatBot.onReaction.set(info.messageID, formSet); }); }, onReaction: async function ({ message, threadsData, event, Reaction, getLang }) { const { author, newPrefix, setGlobal } = Reaction; if (event.userID !== author) return; if (setGlobal) { global.GoatBot.config.prefix = newPrefix; fs.writeFileSync(global.client.dirConfig, JSON.stringify(global.GoatBot.config, null, 2)); return message.reply(getLang("successGlobal", newPrefix)); } else { await threadsData.set(event.threadID, newPrefix, "data.prefix"); return message.reply(getLang("successThisThread", newPrefix)); } }, onChat: async function ({ event, message, getLang }) { if (event.body && event.body.toLowerCase() === "prefix") { return () => { return message.reply(getLang("myPrefix", global.GoatBot.config.prefix, utils.getPrefix(event.threadID))); }; } } };
+module.exports = {
+	config: {
+		name: "prefix",
+		version: "1.0.1",
+		author: "Kaizenji",//prefix with random gif, mp4 or png
+		countDown: 3,
+		role: 0,
+		shortDescription: "prefix with random gif",
+		longDescription: "view chatbot prefix",
+		category: "system",
+		guide: "{p}prefix",
+	},
+
+	onStart: async function ({ message, prefix }) {
+
+	 var link = [ 
+     
+'https://i.imgur.com/Gg9KhpU.gif',
+     'https://i.imgur.com/Gg9KhpU.gif',
+     
+	];
+let img = link[Math.floor(Math.random()*link.length)];
+message.send({
+
+	body: `👾 𝖲𝗒𝗌𝗍𝖾𝗆 𝗉𝗋𝖾𝖿𝗂𝗑: [ / ]
+🤖 𝖸𝗈𝗎𝗋 𝖻𝗈𝗑 𝖼𝗁𝖺𝗍 𝗉𝗋𝖾𝖿𝗂𝗑: [ ${global.GoatBot.config.prefix} ]
+
+𝖳𝗒𝗉𝖾 ${global.GoatBot.config.prefix}𝗁𝖾𝗅𝗉 𝗍𝗈 𝗌𝖾𝖾 𝖺𝗅𝗅 𝖼𝗈𝗆𝗆𝖺𝗇𝖽𝗌.
+𝖳𝗒𝗉𝖾 ${global.GoatBot.config.prefix}𝗁𝖾𝗅𝗉 [𝖼𝗆𝖽 𝗇𝖺𝗆𝖾] 𝗍𝗈 𝗏𝗂𝖾𝗐 𝖽𝖾𝗍𝖺𝗂𝗅𝗌 𝗈𝖿 𝖼𝗈𝗆𝗆𝖺𝗇𝖽.
+
+𝖤𝗇𝗃𝗈𝗒 𝗎𝗌𝗂𝗇𝗀, 𝗉𝗅𝖾𝖺𝗌𝖾 𝖽𝗈𝗇'𝗍 𝗌𝗉𝖺𝗆(⁠っ⁠.⁠❛⁠ ⁠ᴗ⁠ ⁠❛⁠.⁠)⁠っ`,
+
+attachment: await global.utils.getStreamFromURL(img)
+})
+},
+onChat: async function ({ event, message, getLang, prefix }) {
+    if (event.body && event.body.toLowerCase() === 'prefix') {
+      this.onStart({ message, prefix });
+    }
+  }
+};
