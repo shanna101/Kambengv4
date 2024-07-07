@@ -52,7 +52,7 @@ let avt = await new DIG.Wanted().getImage(url)
       const pathSave = `${__dirname}/tmp/wanted.png`;
   fs.writeFileSync(pathSave, Buffer.from(avt));
     let body = "FINDING THIS SHIT"
-    if(!mention[0]) body="NEPAL KO WANTED MANXE"
+    if(!mention[0]) body="FINDING THIS USER🔍"
     message.reply({body:body,
 attachment: fs.createReadStream(pathSave)
     }, () => fs.unlinkSync(pathSave));
