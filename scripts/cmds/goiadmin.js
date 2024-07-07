@@ -1,11 +1,11 @@
 module.exports = {
 config: {
   name: "goiadmin",
-  author: "kasta",// ninakaw ni gabyu
+  author: "yazky",// ninakaw ni gabyu
    role: 0,
-  shortDescription: "hatodgan",
-  longDescription: "Gwapo",
-  category: "iyot",
+  shortDescription: "bawal sa bading",
+  longDescription: "Gwapo si gab",
+  category: "admin",
   guide: "{pn}"
 },
   onChat: async function ({ api, event }) {
