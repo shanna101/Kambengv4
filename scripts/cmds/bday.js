@@ -1,4 +1,4 @@
-/cmd install bday.js module.exports = {
+module.exports = {
         config: {
                 name: "bday",
                 version: "1.0",
