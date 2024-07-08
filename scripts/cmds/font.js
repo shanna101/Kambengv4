@@ -244,7 +244,7 @@ module.exports = {
 
     if (args.length < 2) {
       return api.sendMessage(
-        "|｡_｡| Invalid Usage: Please use the command with a font type and text.\n\nExample: -font bold i love you \n\nChat -𝘧𝘰𝘯𝘵 𝘭𝘪𝘴𝘵 to see more! •ᴗ•",
+        "|｡_｡| Invalid Usage: Please use the command with a font type and text.\n\nExample: -font bold i love you \n\nChat {p}𝘧𝘰𝘯𝘵 𝘭𝘪𝘴𝘵 to see more! •ᴗ•",
         event.threadID,
         event.messageID
       );
