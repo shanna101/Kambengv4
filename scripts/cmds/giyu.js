@@ -1,28 +1,31 @@
 const axios = require('axios');
 const { GoatWrapper } = require('fca-liane-utils');
 
+
 module.exports = {
-    config: {
+  config: {
     name: "giyu",
-    aliases: ["gab"],
+    aliases: ["tomioka"],
     author: "AkhiroDEV",
-    shortDescription: "Interact with Giyu, a character from Demon Slayer",
+    shortDescription: "Interact with the Giyu Tomioka, an water hashira from the anime Demon Slayer.",
+    category: "AkhiroAIs",
   },
-   async onStart({ message, args }){
+  async onStart({ message, args }) {
     const query = args.join(" ");
     if (!query) {
-     return message.reply("What do you want? ");
+      return message.reply("Please provide a query.");
     }
     try {
-    const AkhiroAIs = await axios.get(`https://akhiroai.onrender.com/api?model=giyu&q=${encodeURIComponent(query)}`);
-    const response = AkhiroAIs.data.message;
-    message.reply(response);
+      const AkhiroAIs = await axios.get(`https://akhiroai.onrender.com/api?model=giyu&q=${encodeURIComponent(query)}`);
+      const response = AkhiroAIs.data.message;
+      message.reply(response);
     } catch (error) {
-    console.log(error);
-    await message.send(`ERROR: ${error.message}`)
+      console.log(error);
+      await message.reply(`ERROR: ${error.message}`);
     }
   }
 }
 
 const wrapper = new GoatWrapper(module.exports);
+
 wrapper.applyNoPrefix({ allowPrefix: true });
