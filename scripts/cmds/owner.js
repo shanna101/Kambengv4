@@ -1,138 +1,66 @@
+const { GoatWrapper } = require('fca-liane-utils');
 const axios = require('axios');
-
 const fs = require('fs');
-
 const path = require('path');
 
-
 module.exports = {
+	config: {
+		name: "owner",
+		author: "Tokodori",
+		role: 0,
+		shortDescription: " ",
+		longDescription: "",
+		category: "admin",
+		guide: "{pn}"
+	},
 
-config: {
+	onStart: async function ({ api, event }) {
+		try {
+			const ownerInfo = {
+				name: '𝗚𝗔𝗕 𝗬𝗨',
+				gender: '𝗠𝗔𝗟𝗘',
+				hobby: '𝗠𝗔𝗞𝗜𝗡𝗚 𝗕𝗢𝗧𝗦',
+				Fb: 'https://facebook.com/ 61562362827346',
+				Relationship: '𝘄𝗶𝘁𝗵 𝘁𝗿𝗶𝘅𝗶𝗲',
+				bio: '𝗕𝗮𝗹𝗶𝗸 𝗻𝘆𝗼 𝗺𝗮𝗶𝗻 𝗮𝗰𝗰𝗼𝘂𝗻𝘁 𝗸𝗼! '
+			};
 
-  name: "owner",
+			const bold = 'https://i.imgur.com/f00YmuI.mp4';
+			const tmpFolderPath = path.join(__dirname, 'tmp');
 
-  aurthor:"Tokodori",// Convert By Goatbot Tokodori 
+			if (!fs.existsSync(tmpFolderPath)) {
+				fs.mkdirSync(tmpFolderPath);
+			}
 
-   role: 0,
+			const videoResponse = await axios.get(bold, { responseType: 'arraybuffer' });
+			const videoPath = path.join(tmpFolderPath, 'owner_video.mp4');
 
-  shortDescription: " ",
+			fs.writeFileSync(videoPath, Buffer.from(videoResponse.data, 'binary'));
 
-  longDescription: "",
-
-  category: "admin",
-
-  guide: "{pn}"
-
-},
-
-
-  onStart: async function ({ api, event }) {
-
-  try {
-
-    const ownerInfo = {
-
-      name: '𝗚𝗔𝗕 𝗬𝗨',
-
-      gender: '𝗠𝗔𝗟𝗘',
-
-      age: '𝟭𝟰',
-
-      height: '𝟱 𝟳',
-
-      facebookLink: 'https://www.facebook.com/profile.php?id=100079114908948',
-
-      nick: '𝗚𝗜𝗬𝗨'
-
-    };
-
-
-    const bold = 'https://i.imgur.com/TNUi9vC.mp4'; // Replace with your Google Drive videoid link https://drive.google.com/uc?export=download&id=here put your video id
-
-
-    const tmpFolderPath = path.join(__dirname, 'tmp');
-
-
-    if (!fs.existsSync(tmpFolderPath)) {
-
-      fs.mkdirSync(tmpFolderPath);
-
-    }
-
-
-    const videoResponse = await axios.get(bold, { responseType: 'arraybuffer' });
-
-    const videoPath = path.join(tmpFolderPath, 'owner_video.mp4');
-
-
-    fs.writeFileSync(videoPath, Buffer.from(videoResponse.data, 'binary'));
-
-
-    const response = `
-
-Owner Information:🧾
-
+			const response = `
+◈ 𝖮𝖶𝖭𝖤𝖱 𝖨𝖭𝖥𝖮𝖱𝖬𝖠𝖳𝖨𝖮𝖭:\n
 Name: ${ownerInfo.name}
-
 Gender: ${ownerInfo.gender}
+Relationship: ${ownerInfo.Relationship}
+Hobby: ${ownerInfo.hobby}
+Fb: ${ownerInfo.Fb}
+Bio: ${ownerInfo.bio}
+			`;
 
-Age: ${ownerInfo.age}
+			await api.sendMessage({
+				body: response,
+				attachment: fs.createReadStream(videoPath)
+			}, event.threadID, event.messageID);
 
-Height: ${ownerInfo.height}
+			fs.unlinkSync(videoPath);
 
-Facebook: ${ownerInfo.facebookLink}
+			api.setMessageReaction('🌊', event.messageID, (err) => {}, true);
+		} catch (error) {
+			console.error('Error in ownerinfo command:', error);
+			return api.sendMessage('An error occurred while processing the command.', event.threadID);
+		}
+	}
+};
 
-Nick: ${ownerInfo.nick}
-
-`;
-
-
-
-    await api.sendMessage({
-
-      body: response,
-
-      attachment: fs.createReadStream(videoPath)
-
-    }, event.threadID, event.messageID);
-
-
-    if (event.body.toLowerCase().includes('ownerinfo')) {
-
-      api.setMessageReaction('☣', event.messageID, (err) => {}, true);
-
-    }
-
-  } catch (error) {
-
-    console.error('Error in ownerinfo command:', error);
-
-    return api.sendMessage('An error occurred while processing the command.', event.threadID);
-
-   }
-
-    },
-
-    onChat: async function({ api, event }) {
-
-      try {
-
-        const lowerCaseBody = event.body.toLowerCase();
-
-        
-
-        if (lowerCaseBody === "owner" || lowerCaseBody.startsWith("{p}owner")) {
-
-          await this.onStart({ api, event });
-
-        }
-
-      } catch (error) {
-
-        console.error('Error in onChat function:', error);
-
-      }
-
-    }
-
-  };
+const wrapper = new GoatWrapper(module.exports);
+wrapper.applyNoPrefix({ allowPrefix: true });
