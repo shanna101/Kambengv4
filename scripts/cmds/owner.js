@@ -25,7 +25,7 @@ module.exports = {
 				bio: '𝗕𝗮𝗹𝗶𝗸 𝗻𝘆𝗼 𝗺𝗮𝗶𝗻 𝗮𝗰𝗰𝗼𝘂𝗻𝘁 𝗸𝗼! '
 			};
 
-			const bold = 'https://i.imgur.com/f00YmuI.mp4';
+			const bold = 'https://i.imgur.com/Mg3qDXh.mp4';
 			const tmpFolderPath = path.join(__dirname, 'tmp');
 
 			if (!fs.existsSync(tmpFolderPath)) {
@@ -54,7 +54,7 @@ Bio: ${ownerInfo.bio}
 
 			fs.unlinkSync(videoPath);
 
-			api.setMessageReaction('🌊', event.messageID, (err) => {}, true);
+			api.setMessageReaction('🔥', event.messageID, (err) => {}, true);
 		} catch (error) {
 			console.error('Error in ownerinfo command:', error);
 			return api.sendMessage('An error occurred while processing the command.', event.threadID);
