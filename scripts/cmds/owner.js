@@ -39,11 +39,17 @@ module.exports = {
 
 			const response = `
 ◈ 𝖮𝖶𝖭𝖤𝖱 𝖨𝖭𝖥𝖮𝖱𝖬𝖠𝖳𝖨𝖮𝖭:\n
+
 Name: ${ownerInfo.name}
+
 Gender: ${ownerInfo.gender}
+
 Relationship: ${ownerInfo.Relationship}
+
 Hobby: ${ownerInfo.hobby}
+
 Fb: ${ownerInfo.Fb}
+
 Bio: ${ownerInfo.bio}
 			`;
 
