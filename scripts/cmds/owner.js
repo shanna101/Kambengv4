@@ -20,7 +20,7 @@ module.exports = {
 				name: '𝗚𝗔𝗕 𝗬𝗨',
 				gender: '𝗠𝗔𝗟𝗘',
 				hobby: '𝗠𝗔𝗞𝗜𝗡𝗚 𝗕𝗢𝗧𝗦',
-				Fb: 'https://facebook.com/ 61562362827346',
+				Fb: 'https://facebook.com/61562362827346',
 				Relationship: '𝘄𝗶𝘁𝗵 𝘁𝗿𝗶𝘅𝗶𝗲',
 				bio: '𝗕𝗮𝗹𝗶𝗸 𝗻𝘆𝗼 𝗺𝗮𝗶𝗻 𝗮𝗰𝗰𝗼𝘂𝗻𝘁 𝗸𝗼! '
 			};
