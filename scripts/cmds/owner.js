@@ -25,7 +25,7 @@ module.exports = {
 				bio: '𝗕𝗮𝗹𝗶𝗸 𝗻𝘆𝗼 𝗺𝗮𝗶𝗻 𝗮𝗰𝗰𝗼𝘂𝗻𝘁 𝗸𝗼! '
 			};
 
-			const bold = 'https://i.imgur.com/f00YmuI.mp4';
+			const bold = 'https://i.imgur.com/Kyo3frH.mp4';
 			const tmpFolderPath = path.join(__dirname, 'tmp');
 
 			if (!fs.existsSync(tmpFolderPath)) {
