@@ -17,7 +17,7 @@
     "ignoreCommand": []
   },
   "adminBot": [
-    "61563454044150",
+    "61574547310521",
     ""
   ],
   "whiteListMode": {
@@ -28,8 +28,8 @@
   "OWNER": "Shanna Mae",
   "AGE": "15",
   "GENDER": "FEMALE",
-  "nickNameBot": "義 Yuri | 🌊 勇",
-  "FACEBOOK": "https://www.facebook.com/profile.php?id=61563454044150",
+  "nickNameBot": "義 tazhlee | 🌊 勇",
+  "FACEBOOK": "https://www.facebook.com/profile.php?id=61574547310521",
   "prefix": "!",
   "database": {
     "type": "sqlite",
